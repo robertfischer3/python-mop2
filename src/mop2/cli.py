@@ -16,11 +16,19 @@ Why does this file exist, and why not put this in __main__?
 """
 import argparse
 
-parser = argparse.ArgumentParser(description="Welcome to Mop 2!\nCommand descriptions.", epilog='Robert Fischer, 2020')
+parser = argparse.ArgumentParser(
+    description="Welcome to Mop 2!\nCommand descriptions.",
+    epilog="Robert Fischer, 2020",
+)
 
-parser.add_argument('-p', '--policy', action='store', help='Policy command palete')
-parser.add_argument('-pyp', '--python_policy', action='store', help='Python policies command palete')
-parser.add_argument('--brokenpipe', action='store', help='Broken pipe is a testing fixture')
+parser.add_argument("-p", "--policy", action="store", help="Policy command palete")
+parser.add_argument(
+    "-pyp", "--python_policy", action="store", help="Python policies command palete"
+)
+parser.add_argument(
+    "--brokenpipe", action="store", help="Broken pipe is a testing fixture"
+)
+
 
 def main(args=None):
     args = parser.parse_args(args=args)

@@ -11,6 +11,12 @@ twine = "*"
 pytest = "*"
 parameterized = "*"
 coverage = "*"
+azure-mgmt-resource = "*"
+python-dotenv = "*"
+atomicwrites = "*"
+azure-identity = "*"
+jmespath = "*"
+azure-keyvault-secrets = "*"
 
 [requires]
 python_version = "3.8"
