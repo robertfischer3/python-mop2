@@ -43,7 +43,7 @@ def create_baseline_configuration(configuration_file):
         "galleryEndpointUrl": "https://gallery.azure.com/",
         "managementEndpointUrl": "https://management.core.windows.net/",
         "scope": "User.ReadBasic.All",
-        "test_data_file":"test_data.ini"
+        "test_data_file": "test_data.ini",
     }
     """
     The configuration file supports multiple database instances

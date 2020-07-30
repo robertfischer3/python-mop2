@@ -3,7 +3,6 @@ from cryptography.fernet import Fernet
 
 
 class SimpleFileEncryption(object):
-
     def __init__(self, key_directory=None):
         if key_directory is None:
             self.key_directory = os.curdir
@@ -12,7 +11,7 @@ class SimpleFileEncryption(object):
         else:
             raise IsADirectoryError
 
-    def write_key(self,keyfile="privatekey.key"):
+    def write_key(self, keyfile="privatekey.key"):
         """
         Generates a key and save it into a file. generate_key() function generates
          a fernet key, you need to keep this in a safe place, if you lose this key,
@@ -63,4 +62,3 @@ class SimpleFileEncryption(object):
         # write the original file
         with open(filename, "wb") as file:
             file.write(decrypted_data)
-

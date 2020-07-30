@@ -12,6 +12,7 @@ OPERATIONSPATH = "../../../data"
 TESTVARIABLES = "test.app.config.ini"
 TESTINGPATH = "../../../data"
 
+
 def create_baseline_configuration(configuration_file):
     """
         This method supports the auto-generation of test data.  Use this method in any way that supports
