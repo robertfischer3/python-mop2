@@ -1,0 +1,1 @@
+This directory is for configuration files.  Never check the configuration files into this project.  IT IS UNSAFE.

@@ -13,7 +13,10 @@ from mop2.utils.configuration import TESTINGPATH, TESTVARIABLES
 from mop2.utils.files import change_dir
 
 
-class TestPolicyAssignment(TestCase):
+class MyTestCase(TestCase):
+    pass
+
+class TestPolicyAssignment(MyTestCase):
 
     def setUp(self) -> None:
         load_dotenv()

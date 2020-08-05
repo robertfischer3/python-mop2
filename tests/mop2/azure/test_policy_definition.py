@@ -3,14 +3,14 @@ import uuid
 from configparser import ConfigParser
 
 from azure.common.client_factory import get_client_from_json_dict
-from azure.mgmt.resource import PolicyClient, ResourceManagementClient
+from azure.mgmt.resource import PolicyClient
 
 from mop2.comprehension.azure.identity.azure_identity_credential_adapter import AzureIdentityCredentialAdapter
 
 from dotenv import load_dotenv
 from unittest import TestCase
 from mop2.comprehension.azure.resource_manager.policy_definition import PolicyDefinition as MopPolicyDefinition
-from mop2.comprehension.azure.resource_manager.policy_assignment import PolicyAssignment as MopPolicyAssignment
+
 
 import logging
 import sys
@@ -36,7 +36,7 @@ class TestPolicyDefinition(TestCase):
         client_secret = os.environ["KEY"]
 
         logging_level = self.config['LOGGING']['level']
-        logging.basicConfig(stream=sys.stdout, level=logging_level)
+        logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
 
     def test_get(self):
         credentials = AzureIdentityCredentialAdapter()

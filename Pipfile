@@ -17,6 +17,7 @@ atomicwrites = "*"
 azure-identity = "*"
 jmespath = "*"
 azure-keyvault-secrets = "*"
+azure-mgmt-policyinsights = "*"
 
 [requires]
 python_version = "3.8"

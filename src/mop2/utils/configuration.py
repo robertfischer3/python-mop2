@@ -66,7 +66,7 @@ def create_baseline_configuration(configuration_file):
         "policy_definition_category": "Security",
         "policy_definition_name_01": "",
     }
-    config["LOGGING"] = {"level": "20"}
+    config["LOGGING"] = {"level": "10"}
     config["AZURESDK"] = {
         "management_group_scope_policy_assignment": "/providers/Microsoft.Management/managementGroups/{managementGroup}"
     }

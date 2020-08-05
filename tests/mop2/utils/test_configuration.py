@@ -7,7 +7,8 @@ import logging
 
 from mop2.utils.configuration import TESTINGPATH, TESTVARIABLES
 from mop2.utils.files import change_dir
-
+from mop2.utils.configuration import create_baseline_configuration
+import os
 
 class TestConfiguration(TestCase):
     """
@@ -18,3 +19,9 @@ class TestConfiguration(TestCase):
         with change_dir(TESTINGPATH):
             self.config = ConfigParser()
             self.config.read(TESTVARIABLES)
+
+    def test_configuration_generation(self):
+        with change_dir(TESTINGPATH):
+            create_baseline_configuration(TESTVARIABLES)
+            self.assertTrue(os.path.isfile(TESTVARIABLES))
+
