@@ -18,6 +18,8 @@ azure-identity = "*"
 jmespath = "*"
 azure-keyvault-secrets = "*"
 azure-mgmt-policyinsights = "*"
+tenacity = "*"
+
 
 [requires]
 python_version = "3.8"

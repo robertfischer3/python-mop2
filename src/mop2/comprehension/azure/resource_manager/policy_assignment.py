@@ -102,7 +102,7 @@ class PolicyAssignment:
         assignment_scope = assignment_scope.format(managementGroup=management_group_id)
 
         parameters = self.create_assignment_body(policy_definition)
-        print(parameters)
+
         policy_client = PolicyClient(
             credentials=credentials, subscription_id=subscription_id
         )

@@ -68,7 +68,8 @@ def create_baseline_configuration(configuration_file):
     }
     config["LOGGING"] = {"level": "10"}
     config["AZURESDK"] = {
-        "management_group_scope_policy_assignment": "/providers/Microsoft.Management/managementGroups/{managementGroup}"
+        "management_group_scope_policy_assignment": "/providers/Microsoft.Management/managementGroups/{managementGroup}",
+        'policy_definitions_create_or_update_at_management_group': 'https://management.azure.com/providers/Microsoft.Management/managementgroups/{managementGroupId}/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}?api-version=2019-09-01',
     }
     config["PRISMACLOUD"] = {
         "api2_eu_login": "https://api2.eu.prismacloud.io/login",

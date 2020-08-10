@@ -1,20 +1,15 @@
+import glob
 import os
-import uuid
 from configparser import ConfigParser
+import logging
+import sys
 
-from azure.common.client_factory import get_client_from_json_dict
 from azure.mgmt.resource import PolicyClient
-
 from mop2.comprehension.azure.identity.azure_identity_credential_adapter import AzureIdentityCredentialAdapter
 
 from dotenv import load_dotenv
 from unittest import TestCase
 from mop2.comprehension.azure.resource_manager.policy_definition import PolicyDefinition as MopPolicyDefinition
-
-
-import logging
-import sys
-
 from mop2.utils.configuration import TESTVARIABLES, TESTINGPATH
 from mop2.utils.files import change_dir
 
@@ -97,11 +92,31 @@ class TestPolicyDefinition(TestCase):
         self.assertIsNotNone(policy_definition)
         self.assertTrue("PolicyDefinition" in str(type(policy_definition)))
 
-    def test_create(self):
-        credentials = AzureIdentityCredentialAdapter()
 
-        policy_definition = MopPolicyDefinition(operations_path=TESTINGPATH, config_variables=TESTVARIABLES)
-        assert policy_definition.create()
+    def test_batch_create_at_mangement_group(self):
+        with change_dir(TESTINGPATH):
+            path = os.path.join(os.getcwd(), "azure_policy_definitions")
+
+        policy_definition_list = list()
+
+        with change_dir(path):
+            for file in glob.glob("*.json"):
+                policy_definition_path = os.path.abspath(file)
+                base_name = os.path.basename(policy_definition_path)
+                policy_defintion_name = os.path.splitext(base_name)[0]
+                if not os.path.isfile(policy_definition_path):
+                    raise FileNotFoundError
+                policy_definition_list.append(
+                    {"policy_defintion_name": policy_defintion_name, "policy_definition_path": policy_definition_path})
+
+
+        if len(policy_definition_list) > 0:
+            policy_definition_client = MopPolicyDefinition(operations_path=TESTINGPATH, config_variables=TESTVARIABLES)
+            policy_definition_client.batch_create_at_mangement_group(self.management_group_id, policy_definition_list)
+
+
+    def test_create(self):
+        self.assertTrue(False)
 
     def test_delete(self):
         credentials = AzureIdentityCredentialAdapter()
